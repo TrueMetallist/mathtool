@@ -1,6 +1,8 @@
 import sys
 import math
 
+con = range(-10000, 10000)
+#1
 if len(sys.argv) == 1 or sys.argv[1] == '--help':
     print('''mathtool — решение уравнений вида A*x^2 + B*x + C = 0
 
@@ -8,67 +10,105 @@ if len(sys.argv) == 1 or sys.argv[1] == '--help':
     python mathtool.py                         вывод справки
     python mathtool.py --help                  вывод справки
     python mathtool.py solve                   ввод коэффициентов с клавиатуры
-    python mathtool.py solve 1 -3 2   решение с заданными коэффициентами
+    python mathtool.py solve -a 1 -b -3 -c 2   решение с заданными коэффициентами a, b и c в произвольном порядке
 
 Коэффициенты A, B, C — целые числа, по модулю не превышающие 10000.
 ''')
-    sys.exit('0')
+    sys.exit(0)
 
-elif sys.argv[1] == 'solve' and len(sys.argv) == 2:
-    a = str(input('Введите коэффициент A: '))
-    if a.isdigit() or (a[0] == '-' and a[1:].isdigit()):
-        a = int(a)
+#2
+elif sys.argv[1] == 'solve' and len(sys.argv) == 8:
+    if sys.argv.count('-a') == 1 and sys.argv.count('-b') == 1 and sys.argv.count('-c') == 1:
+    # Приём значения первого аргумента
+        if sys.argv[2] == '-a':
+            if str(sys.argv[3]).isdigit() or (str(sys.argv[3])[0] == '-' and str(sys.argv[3])[1:].isdigit()):
+                a = int(sys.argv[3])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+        elif sys.argv[2] == '-b':
+            if str(sys.argv[5]).isdigit() or (str(sys.argv[5])[0] == '-' and str(sys.argv[5])[1:].isdigit()):
+                a = int(sys.argv[5])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+        elif sys.argv[2] == '-c':
+            if str(sys.argv[7]).isdigit() or (str(sys.argv[7])[0] == '-' and str(sys.argv[7])[1:].isdigit()):
+                a = int(sys.argv[7])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+
+    # Приём значения второго аргумента
+        if sys.argv[4] == '-a':
+            if str(sys.argv[3]).isdigit() or (str(sys.argv[3])[0] == '-' and str(sys.argv[3])[1:].isdigit()):
+                b = int(sys.argv[3])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+        elif sys.argv[4] == '-b':
+            if str(sys.argv[5]).isdigit() or (str(sys.argv[5])[0] == '-' and str(sys.argv[5])[1:].isdigit()):
+                b = int(sys.argv[5])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+        elif sys.argv[2] == '-c':
+            if str(sys.argv[7]).isdigit() or (str(sys.argv[7])[0] == '-' and str(sys.argv[7])[1:].isdigit()):
+                b = int(sys.argv[7])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+
+    # Приём значения третьего аргумента
+        if sys.argv[6] == '-a':
+            if str(sys.argv[3]).isdigit() or (str(sys.argv[3])[0] == '-' and str(sys.argv[3])[1:].isdigit()):
+                c = int(sys.argv[3])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+        elif sys.argv[6] == '-b':
+            if str(sys.argv[5]).isdigit() or (str(sys.argv[5])[0] == '-' and str(sys.argv[5])[1:].isdigit()):
+                c = int(sys.argv[5])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+        elif sys.argv[6] == '-c':
+            if str(sys.argv[7]).isdigit() or (str(sys.argv[7])[0] == '-' and str(sys.argv[7])[1:].isdigit()):
+                c = int(sys.argv[7])  
+            else:
+                sys.stderr.write('Недопустимый ввод')
+                sys.exit(1)
+
+        
     else:
-        print('Недопустимый ввод')
-        sys.exit('1')
-    b = str(input('Введите коэффициент B: '))
-    if b.isdigit() or (b[0] == '-' and b[1:].isdigit()):
-        b = int(b)
-    else:
-        print('Недопустимый ввод')
-        sys.exit('1')
-    c = str(input('Введите коэффициент C: '))
-    if c.isdigit() or (c[0] == '-' and c[1:].isdigit()):
-        c = int(c)
-    else:
-        print('Недопустимый ввод')
-        sys.exit('1')
-    
-elif sys.argv[1] == 'solve' and len(sys.argv) == 5:
-    if str(sys.argv[2]).isdigit() or (str(sys.argv[2])[0] == '-' and str(sys.argv[2])[1:].isdigit()):
-        a = int(sys.argv[2])
-    else:
-        print('Недопустимый ввод')
-        sys.exit('1')
-    if str(sys.argv[3]).isdigit() or (str(sys.argv[3])[0] == '-' and str(sys.argv[3])[1:].isdigit()):
-            b = int(sys.argv[3])
-    else:
-        print('Недопустимый ввод')
-        sys.exit('1')
-    if str(sys.argv[4]).isdigit() or (str(sys.argv[4])[0] == '-' and str(sys.argv[4])[1:].isdigit()):
-            c = int(sys.argv[4])
-    else:
-        print('Недопустимый ввод')
-        sys.exit('1')
+        sys.stderr.write('Недопустимый ввод')
+        sys.exit(1)
 
 else:
-    print('Недопустимый ввод')
-    sys.exit('1')
+    sys.stderr.write('Недопустимый ввод')
+    sys.exit(1)
 
-if (a >=-10000 and a <= 10000) and (b >=-10000 and b <= 10000) and (c >=-10000 and c <= 10000):
+print('Уравнение: ', str(a), 'x^2 + ', str(b), 'x + ', str(c), ' = 0 ')
+#3
+if (a in con and b in con and c in con):
+
+    #4
     D = (b ** 2) - (4 * a * c)
-    print('Дискриминант равен ', D)
+
     if a == 0 and b == 0 and c == 0:
-        print('x - любое число')
-            # При a = 0
+        sys.stderr.write('Нет неизвестного')
+        sys.exit(1)
+
     elif a == 0:
         print('Линейное уравнение')
         if b == 0:
-                print('Недопустимый ввод')
-                sys.exit('1')
+                sys.stderr.write('Нет неизвестного')
+                sys.exit(1)
         else:
             print('x = ', c / b)
+            
     elif a != 0:
+                print('Дискриминант равен ', D)
                 if b == 0:
                     print('Неполное квадратное уравнение')
                 
@@ -82,7 +122,7 @@ if (a >=-10000 and a <= 10000) and (b >=-10000 and b <= 10000) and (c >=-10000 a
                     print('x = ', '{:4.2f}'.format(x1))
                 elif D < 0:
                     print('Нет действительных корней')
-    sys.exit('0')
+    sys.exit(0)
 else:
-    print('Выход за рамки диапозона')
-    sys.exit('1')
+    sys.stderr.write('Выход за рамки диапозона')
+    sys.exit(1)

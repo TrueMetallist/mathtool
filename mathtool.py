@@ -78,6 +78,9 @@ elif sys.argv[1] == 'solve' and len(sys.argv) == 8:
             else:
                 sys.stderr.write('Недопустимый ввод')
                 sys.exit(1)
+    else:
+        sys.stderr.write('Недопустимый ввод')
+        sys.exit(1)   
 
 elif sys.argv[1] == 'solve' and len(sys.argv) == 2:
     a = str(input('Введите коэффициент A: '))
@@ -98,28 +101,6 @@ elif sys.argv[1] == 'solve' and len(sys.argv) == 2:
     else:
         print('Недопустимый ввод')
         sys.exit('1')
-    
-elif sys.argv[1] == 'solve' and len(sys.argv) == 5:
-    if str(sys.argv[2]).isdigit() or (str(sys.argv[2])[0] == '-' and str(sys.argv[2])[1:].isdigit()):
-        a = int(sys.argv[2])
-    else:
-        print('Недопустимый ввод')
-        sys.exit('1')
-    if str(sys.argv[3]).isdigit() or (str(sys.argv[3])[0] == '-' and str(sys.argv[3])[1:].isdigit()):
-            b = int(sys.argv[3])
-    else:
-        print('Недопустимый ввод')
-        sys.exit('1')
-    if str(sys.argv[4]).isdigit() or (str(sys.argv[4])[0] == '-' and str(sys.argv[4])[1:].isdigit()):
-            c = int(sys.argv[4])
-        
-    else:
-        sys.stderr.write('Недопустимый ввод')
-        sys.exit(1)
-
-else:
-    sys.stderr.write('Недопустимый ввод')
-    sys.exit(1)
 
 print('Уравнение: ', str(a), 'x^2 + ', str(b), 'x + ', str(c), ' = 0 ')
 #3

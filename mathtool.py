@@ -26,13 +26,13 @@ elif sys.argv[1] == 'solve' and len(sys.argv) == 8:
             else:
                 sys.stderr.write('Недопустимый ввод')
                 sys.exit(1)
-        elif sys.argv[2] == '-b':
+        elif sys.argv[4] == '-a':
             if str(sys.argv[5]).isdigit() or (str(sys.argv[5])[0] == '-' and str(sys.argv[5])[1:].isdigit()):
                 a = int(sys.argv[5])  
             else:
                 sys.stderr.write('Недопустимый ввод')
                 sys.exit(1)
-        elif sys.argv[2] == '-c':
+        elif sys.argv[6] == '-a':
             if str(sys.argv[7]).isdigit() or (str(sys.argv[7])[0] == '-' and str(sys.argv[7])[1:].isdigit()):
                 a = int(sys.argv[7])  
             else:
@@ -40,7 +40,7 @@ elif sys.argv[1] == 'solve' and len(sys.argv) == 8:
                 sys.exit(1)
 
     # Приём значения второго аргумента
-        if sys.argv[4] == '-a':
+        if sys.argv[2] == '-b':
             if str(sys.argv[3]).isdigit() or (str(sys.argv[3])[0] == '-' and str(sys.argv[3])[1:].isdigit()):
                 b = int(sys.argv[3])  
             else:
@@ -52,7 +52,7 @@ elif sys.argv[1] == 'solve' and len(sys.argv) == 8:
             else:
                 sys.stderr.write('Недопустимый ввод')
                 sys.exit(1)
-        elif sys.argv[4] == '-c':
+        elif sys.argv[6] == '-b':
             if str(sys.argv[7]).isdigit() or (str(sys.argv[7])[0] == '-' and str(sys.argv[7])[1:].isdigit()):
                 b = int(sys.argv[7])  
             else:
@@ -60,13 +60,13 @@ elif sys.argv[1] == 'solve' and len(sys.argv) == 8:
                 sys.exit(1)
 
     # Приём значения третьего аргумента
-        if sys.argv[6] == '-a':
+        if sys.argv[2] == '-c':
             if str(sys.argv[3]).isdigit() or (str(sys.argv[3])[0] == '-' and str(sys.argv[3])[1:].isdigit()):
                 c = int(sys.argv[3])  
             else:
                 sys.stderr.write('Недопустимый ввод')
                 sys.exit(1)
-        elif sys.argv[6] == '-b':
+        elif sys.argv[4] == '-c':
             if str(sys.argv[5]).isdigit() or (str(sys.argv[5])[0] == '-' and str(sys.argv[5])[1:].isdigit()):
                 c = int(sys.argv[5])  
             else:
